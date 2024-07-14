@@ -91,17 +91,17 @@
 ### 📌 최근검색 개발 전 데이터 형태
 
 ```json
-[{
-    nationcode: string; // KR
-    type: string; // city: 2, hotel: 3
-    division: string; // parent_city, city, hotel
-    keyword: string; // 제주도 전체, 한국
-    keyword_id: string; // 714643
-    keyword_urid: string | undefined;
-    guestInfos: string; // 2~2,3~10,4~11
-    from: { year: number, month: number, day: number };
-    to: { year: number, month: number, day: number };
-}]
+{
+    "nationcode": "string",
+    "type": "string",
+    "division": "string",
+    "keyword": "string",
+    "keyword_id": "string",
+    "keyword_urid": "string | undefined",
+    "guestInfos": "string",
+    "from": { "year": "number", "month": "number", "day": "number" },
+    "to": { "year": "number", "month": "number", "day": "number" }
+}
 ```
 
 ### 📌 최근검색 데이터 설계
