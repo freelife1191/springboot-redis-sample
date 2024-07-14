@@ -1,0 +1,29 @@
+# 실행하려는 컨테이너들 정의
+services:  
+  # 서비스명
+  redis:
+    # 사용할 이미지
+    image: redis:latest
+    # 컨테이너명
+    #container_name: redis
+    # 접근 포트 설정(컨테이너 외부:컨테이너 내부)
+    ports:
+      - 6379:6379
+    # 스토리지 마운트(볼륨) 설정
+    volumes:
+      - data:/data
+    # 컨테이너에 docker label을 이용해서 메타데이터 추가
+    labels:
+      - "name=redis"
+      - "mode=standalone"
+    environment:
+      TZ: "Asia/Seoul"
+    # 컨테이너 종료시 재시작 여부 설정
+    # no : 재시작 하지 않음.
+    # always : exit code와 상관없이 항상 재시작.
+    # on-failure : exit code가 0일 아닐때만 재시작
+    # unless-stopped : 컨테이너 상태를 수동으로 stop 하기전까지 재시작.
+    restart: on-failure
+    command: redis-server --port 6379 --bind 0.0.0.0 --save 20 1
+volumes:
+  data:

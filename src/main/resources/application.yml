@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: springboot-redis-sample
+  profiles:
+    active: local
+  # Local 테스트시 자동으로 Docker Compose Redis 가 구동됨
+  # 상시 구동 시에는 사용하지 않음
+  #docker:
+  #  compose:
+  #    file: "./script/docker-compose.yml"
+  #    profiles:
+  #      active: debug
+  data:
+    redis:
+      # Cluster Redis 설정
+      #cluster:
+      #  nodes: cluster:6379
+      host: 127.0.0.1
+      port: 6379
+      client-type: lettuce
+      timeout: 1s
+      connect-timeout: 5s
+      lettuce:
+        pool:
+          enabled: true
+          max-active: 4 # pool에 할당될 수 있는 커넥션 최대수(음수로 사용시 무제한)
+          max-idle: 4 # pool의 idle 커넥션 최대수(음수로 사용시 무제한)
+          max-wait: 5s # pool이 바닥났을 때 예외발생 전에 커넥션 할당 차단의 최대 시간(단위: 밀리세컨드, 음수는 무제한 차단)
+          min-idle: 1 # pool에서 관리하는 idle 커넥션 최소 수(양수일 때만 유효)
+          time-between-eviction-runs: 10m # 10분마다 사용하지 않는 POOL 정리
+        # Cluster Redis Topology Refresh 설정
+        #cluster:
+        #  refresh:
+        #    adaptive: on
+        #    dynamic-refresh-sources: true
+        #    period: 30s
+recent:
+  search:
+    member-expire: 365d # 회원 캐시 유지 기간
+    idvisitor-expire: 30m # 비회원 캐시 유지 기간
+    write: true # 쓰기 가능 여부 (default: true)
+    delete: true # 삭제 가능 여부 (default: true)
+    max-size: 10 # 최대 캐시 사이즈 (default: 10)
+logging:
+  level:
+    com.example: debug
+    org.springframework.data: info

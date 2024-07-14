@@ -1,0 +1,10 @@
+{
+  "nation_code": "KR",
+  "search_type": "CITY",
+  "division": "parent_city",
+  "keyword": "제주도 전체, 한국",
+  "id": "100249",
+  "options": "2,1~5,1",
+  "from": "2024-01-02",
+  "to": "2024-01-05"
+}
