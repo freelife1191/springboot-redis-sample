@@ -1,4 +1,10 @@
 # locustfile.py
+# locust 테스트에 필요한 패키지 설치
+# python 설치: brew install python
+# locust 설치: brew install locust
+
+# 아래의 명령으로 테스트
+# locust -f ./locustfile.py --host=https://localhost:8080
 from locust import HttpUser, task, between, TaskSet
 import random
 

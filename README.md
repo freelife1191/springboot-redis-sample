@@ -1096,10 +1096,20 @@ Redis 에 저장해야되는 데이터의 양이 많다면 가급적 String 형�
 
 부하 테스트는 `locust` 툴로 테스트
 
+```shell
+# locust 테스트에 필요한 패키지 설치
+$ brew install python
+$ brew install locust
+
+# 아래의 명령으로 테스트
+$ locust -f ./locustfile.py --host=https://localhost:8080
+```
+
 - 테스트에 사용한 locust 스크립트 참고: [test_locust_script](locust/locustfile.py)
 - 참고
   - https://locust.io/
   - https://cheese10yun.github.io/locust-part-1/
+  - https://cheese10yun.github.io/locust-part-2/
 
 - 개발서버(t3a.xlarge 4 vCPU/16 GiB)에서 부하테스트 실행 운영 서버에서는 더 괜찮은 성능이 나올 것으로 기대함
 - RPS(초당 요청 개수) **700건** 기준으로 최소 **85ms** 최대 **170ms** 처리 속도가 유지됨 (실패는 0건)
