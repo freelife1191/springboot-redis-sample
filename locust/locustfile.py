@@ -64,7 +64,7 @@ class MainBehavior(TaskSet):
     # tasks = [GetNestedBehavior]
     # tasks = [DeleteNestedBehavior]
     # tasks = {Sub1, Sub2}
-    def on_start(self):
+    # def on_start(self):
 
         #self.client.headers = {
         #    "Content-Type": "application/json",
